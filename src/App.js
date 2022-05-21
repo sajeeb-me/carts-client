@@ -1,6 +1,5 @@
 import './App.css';
 import 'react-toastify/dist/ReactToastify.css';
-<<<<<<< HEAD
 import { ToastContainer } from 'react-toastify';
 import Navbar from './components/Navbar';
 import { Route, Routes } from 'react-router-dom';
@@ -11,15 +10,10 @@ import Dashboard from './pages/Dashboard/Dashboard';
 import MyOrders from './pages/Dashboard/MyOrders';
 import AddReview from './pages/Dashboard/AddReview';
 import MyProfile from './pages/Dashboard/MyProfile';
-=======
-import { ToastContainer, toast } from 'react-toastify';
->>>>>>> be1d90b35d8c24813c2de23f4f4e5cdbe7bb34b2
 
 function App() {
-  const notify = () => toast.success("Wow so easy!");
   return (
     <div className="App">
-<<<<<<< HEAD
       <Navbar>
         <Routes>
           {
@@ -37,10 +31,6 @@ function App() {
           </Route>
         </Routes>
       </Navbar>
-=======
-      <h1>Hello from Carts</h1>
-      <button onClick={notify} className="btn btn-primary">Button</button>
->>>>>>> be1d90b35d8c24813c2de23f4f4e5cdbe7bb34b2
       <ToastContainer />
     </div>
   );
