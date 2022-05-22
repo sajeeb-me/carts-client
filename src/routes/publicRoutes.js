@@ -1,3 +1,4 @@
+import PageLoading from "../components/PageLoading";
 import Blogs from "../pages/Blogs/Blogs";
 import Home from "../pages/Home.js/Home";
 import Login from "../pages/Login/Login";
@@ -8,4 +9,5 @@ export const publicRoute = [
     { path: '/blogs', name: "Blogs", Component: Blogs },
     { path: '/portfolio', name: "MyPortfolio", Component: MyPortfolio },
     { path: '/login', name: "Login", Component: Login },
+    { path: '/loading', name: "PageLoading", Component: PageLoading },
 ]

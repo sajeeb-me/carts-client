@@ -1,4 +1,3 @@
-import './App.css';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
 import Navbar from './components/Navbar';
@@ -10,10 +9,18 @@ import Dashboard from './pages/Dashboard/Dashboard';
 import MyOrders from './pages/Dashboard/MyOrders';
 import AddReview from './pages/Dashboard/AddReview';
 import MyProfile from './pages/Dashboard/MyProfile';
+import { useEffect } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 function App() {
+
+  useEffect(() => {
+    AOS.init();
+  })
+
   return (
-    <div className="App">
+    <div>
       <Navbar>
         <Routes>
           {
