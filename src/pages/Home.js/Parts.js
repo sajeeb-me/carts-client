@@ -1,15 +1,11 @@
 import React from 'react';
-import { useQuery } from 'react-query';
-import PageLoading from '../../components/PageLoading';
 import PartCard from './PartCard';
 
-const Parts = () => {
+const Parts = ({ data, isLoading }) => {
 
-    const { data: parts, isLoading } = useQuery('parts', () => fetch('parts.json').then(res => res.json()))
-    // console.log(parts);
-    if (isLoading) {
-        return <PageLoading />
-    }
+
+    // console.log(data);
+
 
 
     return (
@@ -20,7 +16,7 @@ const Parts = () => {
             </div>
             <article className='max-w-screen-2xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 my-20'>
                 {
-                    parts.map((part, index) => <PartCard key={index} part={part} />)
+                    data.map(part => <PartCard key={part._id} part={part} />)
                 }
             </article>
         </section>
