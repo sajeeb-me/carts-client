@@ -1,16 +1,26 @@
+import { signOut } from 'firebase/auth';
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
+import auth from '../authentication/firebase.init';
 
 const Navbar = ({ children }) => {
     const navigate = useNavigate();
     const { pathname } = useLocation();
+    const [user] = useAuthState(auth)
 
     const navItems = [
         <li><NavLink className="rounded" to='/'>Home</NavLink></li>,
         <li><NavLink className="rounded" to='/dashboard/my-orders'>Dashboard</NavLink></li>,
         <li><NavLink className="rounded" to='/blogs'>Blogs</NavLink></li>,
         <li><NavLink className="rounded" to='/portfolio'>Portfolio</NavLink></li>,
-        <button className="rounded btn btn-primary btn-outline" onClick={() => navigate('/login')}>Login</button>
+        <li>{
+            user ?
+                <button className="rounded btn btn-secondary text-base-100" onClick={() => signOut(auth)}>Sign out</button>
+                :
+                <button className="rounded btn btn-primary btn-outline" onClick={() => navigate('/login')}>Login</button>
+
+        }</li>
     ]
     return (
         <div className="drawer">

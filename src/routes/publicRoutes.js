@@ -2,6 +2,8 @@ import PageLoading from "../components/PageLoading";
 import Blogs from "../pages/Blogs/Blogs";
 import Home from "../pages/Home.js/Home";
 import Login from "../pages/Login/Login";
+import ResetPassword from "../pages/Login/ResetPassword";
+import Signup from "../pages/Login/Signup";
 import MyPortfolio from "../pages/MyPortfolio/MyPortfolio";
 
 export const publicRoute = [
@@ -9,5 +11,7 @@ export const publicRoute = [
     { path: '/blogs', name: "Blogs", Component: Blogs },
     { path: '/portfolio', name: "MyPortfolio", Component: MyPortfolio },
     { path: '/login', name: "Login", Component: Login },
+    { path: '/signup', name: "Signup", Component: Signup },
+    { path: '/resetpassword', name: "ResetPassword", Component: ResetPassword },
     { path: '/loading', name: "PageLoading", Component: PageLoading },
 ]

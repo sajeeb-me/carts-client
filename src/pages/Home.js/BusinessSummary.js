@@ -12,7 +12,7 @@ const BusinessSummary = () => {
                 <h1 className='text-3xl lg:text-4xl font-bold'>Our Business Summary</h1>
                 <p className='mt-4 text-base text-gray-600 md:text-lg'>Here you will get a complete knowledge <br className="hidden md:block" /> of our successful business.</p>
             </div>
-            <div className='animate-pulse'>
+            <div className='animate-pulse mt-10 mb-20'>
                 <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
                     <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
                         <div className="md:border-r border-primary cursor-pointer">

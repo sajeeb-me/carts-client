@@ -75,7 +75,7 @@ const Banner = () => {
                                     <div className="mt-4 mb-2 sm:mb-4">
                                         <button
                                             type="submit"
-                                            className="btn btn-primary w-full"
+                                            className="w-full btn btn-primary font-semibold text-white bg-gradient-to-r from-secondary to-primary border-0"
                                         >
                                             Find my parts
                                         </button>
