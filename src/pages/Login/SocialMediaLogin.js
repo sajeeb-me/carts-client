@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useSignInWithFacebook, useSignInWithGithub, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../../authentication/firebase.init';
@@ -14,21 +14,23 @@ const SocialMediaLogin = () => {
 
     const from = location.state?.from?.pathname || '/';
 
-    const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
+    const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
+    const [signInWithFacebook, facebookUser, facebookLoading, facebookError] = useSignInWithFacebook(auth);
+    const [signInWithGithub, gitUser, gitLoading, gitError] = useSignInWithGithub(auth);
     // const [token] = useToken(user);
 
     useEffect(() => {
-        if (user) {
+        if (googleUser || facebookUser || gitUser) {
             // console.log(user);
             navigate(from, { replace: true })
         }
-    }, [user, navigate, from])
-    if (loading) {
+    }, [googleUser, facebookUser, gitUser, navigate, from])
+    if (googleLoading || facebookLoading || gitLoading) {
         return <PageLoading />;
     }
-    if (error) {
-        console.log(error.code);
-        switch (error?.code) {
+    if (googleError || facebookError || gitError) {
+        console.log(googleError.code || facebookError.code || gitError.code);
+        switch (googleError.code || facebookError.code || gitError.code) {
             case "auth/popup-closed-by-user":
                 toast.error("You closed the popup without login", {
                     toastId: 1
@@ -51,12 +53,12 @@ const SocialMediaLogin = () => {
                     </button>
                 </div>
                 <div className='border-r border-primary'>
-                    <button onClick={() => signInWithGoogle()} className='btn btn-ghost'>
+                    <button onClick={() => signInWithFacebook()} className='btn btn-ghost'>
                         <img src={FacebookIcon} alt="" className='h-6' />
                     </button>
                 </div>
                 <div>
-                    <button onClick={() => signInWithGoogle()} className='btn btn-ghost'>
+                    <button onClick={() => signInWithGithub()} className='btn btn-ghost'>
                         <img src={GithubIcon} alt="" className='h-6' />
                     </button>
                 </div>
