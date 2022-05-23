@@ -1,5 +1,6 @@
 import React from 'react';
 import { useQuery } from 'react-query';
+import Footer from '../../components/Footer';
 import PageLoading from '../../components/PageLoading';
 import Banner from './Banner';
 import BusinessSummary from './BusinessSummary';
@@ -17,6 +18,7 @@ const Home = () => {
             <Parts data={data} />
             <BusinessSummary />
             <Reviews />
+            <Footer />
         </div>
     );
 };

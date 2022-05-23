@@ -16,7 +16,7 @@ const Parts = ({ data, isLoading }) => {
             </div>
             <article className='max-w-screen-2xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 my-20'>
                 {
-                    data.map(part => <PartCard key={part._id} part={part} />)
+                    data?.map(part => <PartCard key={part._id} part={part} />)
                 }
             </article>
         </section>

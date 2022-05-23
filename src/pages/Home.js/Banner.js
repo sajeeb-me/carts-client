@@ -25,9 +25,11 @@ const Banner = () => {
                                 data-aos-delay="300"
                                 data-aos-duration="1000"
                                 className="max-w-2xl mb-6 text-4xl uppercase lg:text-5xl font-bold  text-white">
-                                Find your Car Parts <br className="hidden md:block" />
-                                at
-                                <span className="text-secondary"> Carts</span>
+                                Find your Car Parts <br className="hidden md:block mb-5" />
+                                <span className='lowercase font-normal font-serif'>at{' '}</span>
+                                <span class="before:inline-block px-2 mt-2 before:absolute before:-inset-1 before:-skew-y-3 before:bg-secondary relative inline-block">
+                                    <span class="relative text-white">Carts</span>
+                                </span>
                             </h2>
                             <p
                                 data-aos="fade-right"

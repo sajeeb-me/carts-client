@@ -3,8 +3,8 @@ import React from 'react';
 const PartCard = ({ part }) => {
     const { name, image, overview, minOrder, available, price } = part
     return (
-        <div className="card max-w-xl  bg-white hover:shadow-xl duration-200 ease-in">
-            <figure className='h-44'>
+        <div className="card max-w-xl  bg-white border border-primary hover:shadow-xl duration-200 ease-in">
+            <figure className='h-44 hover:'>
                 <img src={image} alt="Shoes" className="rounded-xl h-full" />
             </figure>
             <div className="card-body items-center text-center">

@@ -62,8 +62,8 @@ const ResetPassword = () => {
                             })}
                             className="input input-bordered w-full" />
                         <label className="label">
-                            {errors.email?.type === 'required' && <span className="label-text-alt text-red-500">{errors.email.message}</span>}
-                            {errors.email?.type === 'pattern' && <span className="label-text-alt text-red-500">Provide a valid email</span>}
+                            {errors.email?.type === 'required' && <span className="label-text-alt text-pink-600">{errors.email.message}</span>}
+                            {errors.email?.type === 'pattern' && <span className="label-text-alt text-pink-600">Provide a valid email</span>}
                         </label>
                     </div>
 
