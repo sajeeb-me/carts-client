@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Footer = () => {
     return (
-        <div className="relative mt-40 bg-primary">
+        <div className="relative bg-primary">
             <svg
                 className="absolute top-0 w-full h-6 -mt-5 sm:-mt-10 sm:h-16 text-primary"
                 preserveAspectRatio="none"

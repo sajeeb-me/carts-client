@@ -5,6 +5,7 @@ import PageLoading from '../../components/PageLoading';
 import ArrivingSoon from './ArrivingSoon';
 import Banner from './Banner';
 import BusinessSummary from './BusinessSummary';
+import LatestBlogs from './LatestBlogs';
 import Parts from './Parts';
 import Reviews from './Reviews';
 
@@ -20,6 +21,7 @@ const Home = () => {
             <BusinessSummary />
             <ArrivingSoon />
             <Reviews />
+            <LatestBlogs />
             <Footer />
         </div>
     );

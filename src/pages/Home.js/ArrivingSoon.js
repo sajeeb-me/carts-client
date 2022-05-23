@@ -13,7 +13,7 @@ const ArrivingSoon = () => {
                         <h2 className="max-w-lg mb-6 font-sans text-3xl font-bold tracking-tight sm:text-4xl sm:leading-none">
                             Let's Book Our {' '}
                             <br className="hidden md:block" />
-                            New Arrival {' '}
+                            Upcoming Arrival {' '}
                             <span class="before:inline-block px-2 mt-2 before:absolute before:-inset-1 before:-skew-y-3 before:bg-secondary relative inline-block">
                                 <span class="relative text-white">Tesla</span>
                             </span>

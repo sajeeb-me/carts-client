@@ -3,11 +3,6 @@ import PartCard from './PartCard';
 
 const Parts = ({ data, isLoading }) => {
 
-
-    // console.log(data);
-
-
-
     return (
         <section className='px-4 lg:px-20 my-20'>
             <div className='text-center'>
