@@ -1,17 +1,33 @@
 import React from 'react';
 import { useQuery } from 'react-query';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import PageLoading from '../../components/PageLoading';
 import { useForm } from "react-hook-form";
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../authentication/firebase.init';
+import { signOut } from 'firebase/auth';
 
 const Purchase = () => {
+    const navigate = useNavigate()
     const { id } = useParams()
     const [user] = useAuthState(auth)
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
-    const { data: product, isLoading, refetch } = useQuery('product', () => fetch(`http://localhost:5000/part/${id}`).then(res => res.json()))
+    const { data: product, isLoading, refetch } = useQuery('product', () => fetch(`http://localhost:5000/part/${id}`, {
+        method: "GET",
+        headers: {
+            'content-type': 'application/json',
+            authorization: `Bearer ${localStorage.getItem('accessToken')}`
+        },
+    })
+        .then(res => {
+            if (res.status === 401 || res.status === 403) {
+                localStorage.removeItem('accessToken')
+                signOut(auth)
+                navigate('/login')
+            }
+            return res.json()
+        }))
 
     if (isLoading) {
         return <PageLoading />
@@ -32,9 +48,28 @@ const Purchase = () => {
             phone: data.phone,
             notes: data.notes
         }
-        console.log(submittedOrder);
-        refetch();
-        reset();
+        // console.log(submittedOrder);
+        fetch('http://localhost:5000/order', {
+            method: "POST",
+            headers: {
+                'content-type': 'application/json',
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`
+            },
+            body: JSON.stringify(submittedOrder)
+        })
+            .then(res => {
+                if (res.status === 401 || res.status === 403) {
+                    localStorage.removeItem('accessToken')
+                    signOut(auth)
+                    navigate('/login')
+                }
+                return res.json()
+            })
+            .then(data => {
+                console.log(data);
+                refetch();
+                reset();
+            })
     };
 
     return (
@@ -76,7 +111,7 @@ const Purchase = () => {
                                 </label>
                                 <input
                                     type="text"
-                                    value={minOrder.toLocaleString('en-US')}
+                                    value={minOrder?.toLocaleString('en-US')}
                                     className="input input-bordered w-full mb-3 font-semibold uppercase"
                                     disabled
                                 />
@@ -87,7 +122,7 @@ const Purchase = () => {
                                 </label>
                                 <input
                                     type="text"
-                                    value={available.toLocaleString('en-US')}
+                                    value={available?.toLocaleString('en-US')}
                                     className="input input-bordered w-full mb-3 font-semibold uppercase"
                                     disabled
                                 />
