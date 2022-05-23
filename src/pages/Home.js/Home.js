@@ -10,17 +10,20 @@ import Parts from './Parts';
 import Reviews from './Reviews';
 
 const Home = () => {
-    const { data, isLoading } = useQuery('parts', () => fetch('http://localhost:5000/part').then(res => res.json()))
-    if (isLoading) {
+    const { data: allParts, isLoading: partsLoading } = useQuery('parts', () => fetch('http://localhost:5000/part').then(res => res.json()))
+    const { data: reviews, isLoading: reviewLoading } = useQuery('reviews', () => fetch('http://localhost:5000/review').then(res => res.json()))
+
+    if (partsLoading || reviewLoading) {
         return <PageLoading />
     }
+
     return (
         <div>
             <Banner />
-            <Parts data={data} />
+            <Parts allParts={allParts} />
             <BusinessSummary />
             <ArrivingSoon />
-            <Reviews />
+            <Reviews reviews={reviews} />
             <LatestBlogs />
             <Footer />
         </div>

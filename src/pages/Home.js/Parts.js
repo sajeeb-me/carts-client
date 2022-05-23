@@ -1,7 +1,7 @@
 import React from 'react';
 import PartCard from './PartCard';
 
-const Parts = ({ data, isLoading }) => {
+const Parts = ({ allParts }) => {
 
     return (
         <section className='px-4 lg:px-20 my-20'>
@@ -11,7 +11,7 @@ const Parts = ({ data, isLoading }) => {
             </div>
             <article className='max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 my-20'>
                 {
-                    data?.map(part => <PartCard key={part._id} part={part} />)
+                    allParts?.map(part => <PartCard key={part._id} part={part} />)
                 }
             </article>
         </section>

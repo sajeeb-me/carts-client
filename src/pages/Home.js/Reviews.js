@@ -1,14 +1,8 @@
 import React from 'react';
-import { useQuery } from 'react-query';
-import PageLoading from '../../components/PageLoading';
 import UsersReviews from './UsersReviews';
 
-const Reviews = () => {
-    const { data: reviews, isLoading } = useQuery('reviews', () => fetch('reviews.json').then(res => res.json()))
-    // console.log(reviews);
-    if (isLoading) {
-        return <PageLoading />
-    }
+const Reviews = ({ reviews }) => {
+
 
     return (
         <section className='px-4 lg:px-20 my-20 text-center max-w-screen-xl mx-auto'>

@@ -1,50 +1,50 @@
 [
     {
-        "name": "VOLUP TATEM ACCU",
-        "image": "https://i.ibb.co/c3hGxLQ/parts-1.jpg",
-        "overview": "This part is made with the world class elements which will give you the best performance.",
-        "minOrder": 10,
+        "name": "Cooper Tire",
+        "image": "https://i.ibb.co/0XB80NV/cooper-tire.jpg",
+        "overview": "Cooper is made with the world class elements which will give you the best performance while breaking.",
+        "minOrder": 100,
         "available": 10000,
-        "price": 2700
+        "price": 300
     },
     {
-        "name": "VOLUP TATEM ACCU",
-        "image": "https://i.ibb.co/c3hGxLQ/parts-1.jpg",
-        "overview": "This part is made with the world class elements which will give you the best performance.",
-        "minOrder": 10,
-        "available": 10000,
-        "price": 2700
+        "name": "Double Engine Cooler",
+        "image": "https://i.ibb.co/cLvwFgt/double-engine-cooler.jpg",
+        "overview": "Double Engine Cooler are made with the world class cooler system which will give you the best performance.",
+        "minOrder": 50,
+        "available": 8000,
+        "price": 1200
     },
     {
-        "name": "VOLUP TATEM ACCU",
-        "image": "https://i.ibb.co/c3hGxLQ/parts-1.jpg",
-        "overview": "This part is made with the world class elements which will give you the best performance.",
-        "minOrder": 10,
-        "available": 10000,
-        "price": 2700
+        "name": "Full Control Handle",
+        "image": "https://i.ibb.co/VSFft3Q/full-contron-handle.jpg",
+        "overview": "Full control handle will give you the best performance because here we use full controller.",
+        "minOrder": 200,
+        "available": 20000,
+        "price": 500
     },
     {
-        "name": "VOLUP TATEM ACCU",
-        "image": "https://i.ibb.co/c3hGxLQ/parts-1.jpg",
-        "overview": "This part is made with the world class elements which will give you the best performance.",
-        "minOrder": 10,
-        "available": 10000,
-        "price": 2700
+        "name": "Super Power Break",
+        "image": "https://i.ibb.co/0JWwCtz/super-power-break.jpg",
+        "overview": "Super Power Break is made with powerful breaking system which will give you the best breaking performance.",
+        "minOrder": 150,
+        "available": 15000,
+        "price": 300
     },
     {
-        "name": "VOLUP TATEM ACCU",
-        "image": "https://i.ibb.co/c3hGxLQ/parts-1.jpg",
-        "overview": "This part is made with the world class elements which will give you the best performance.",
-        "minOrder": 10,
-        "available": 10000,
-        "price": 2700
+        "name": "Astroai Meter",
+        "image": "https://i.ibb.co/d0fH6VF/astroai-meter.jpg",
+        "overview": "This meter is made with the world class elements which will give you the best performance.",
+        "minOrder": 100,
+        "available": 5000,
+        "price": 200
     },
     {
-        "name": "VOLUP TATEM ACCU",
-        "image": "https://i.ibb.co/c3hGxLQ/parts-1.jpg",
-        "overview": "This part is made with the world class elements which will give you the best performance.",
-        "minOrder": 10,
-        "available": 10000,
-        "price": 2700
+        "name": "Bullet Engine Filter",
+        "image": "https://i.ibb.co/ZgJGNzp/bullet-engine-filter.jpg",
+        "overview": "Bullet Engine Filter is made with the world class elements which will save your car's engine.",
+        "minOrder": 500,
+        "available": 80000,
+        "price": 400
     }
 ]

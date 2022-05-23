@@ -14,8 +14,8 @@ const ArrivingSoon = () => {
                             Let's Book Our {' '}
                             <br className="hidden md:block" />
                             Upcoming Arrival {' '}
-                            <span class="before:inline-block px-2 mt-2 before:absolute before:-inset-1 before:-skew-y-3 before:bg-secondary relative inline-block">
-                                <span class="relative text-white">Tesla</span>
+                            <span className="before:inline-block px-2 mt-2 before:absolute before:-inset-1 before:-skew-y-3 before:bg-secondary relative inline-block">
+                                <span className="relative text-white">Tesla</span>
                             </span>
                         </h2>
                         <p className="text-base text-gray-600 md:text-lg">

@@ -29,7 +29,7 @@ function App() {
             ))
           }
           <Route element={<PrivateRoute />}>
-            <Route path='/purchase' element={<Purchase />} />
+            <Route path='/purchase/:id' element={<Purchase />} />
             <Route path='/dashboard' element={<Dashboard />} >
               <Route path='my-orders' element={<MyOrders />} />
               <Route path='add-review' element={<AddReview />} />

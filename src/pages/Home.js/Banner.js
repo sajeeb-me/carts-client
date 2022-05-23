@@ -27,8 +27,8 @@ const Banner = () => {
                                 className="max-w-2xl mb-6 text-4xl uppercase lg:text-5xl font-bold  text-white">
                                 Find your Car Parts <br className="hidden md:block mb-5" />
                                 <span className='lowercase font-normal font-serif'>at{' '}</span>
-                                <span class="before:inline-block px-2 mt-2 before:absolute before:-inset-1 before:-skew-y-3 before:bg-secondary relative inline-block">
-                                    <span class="relative text-white">Carts</span>
+                                <span className="before:inline-block px-2 mt-2 before:absolute before:-inset-1 before:-skew-y-3 before:bg-secondary relative inline-block">
+                                    <span className="relative text-white">Carts</span>
                                 </span>
                             </h2>
                             <p
@@ -55,7 +55,7 @@ const Banner = () => {
                                     Select your car
                                 </h3>
                                 <form onSubmit={handleSubmit}>
-                                    <select class="select select-primary bg-white w-full mb-5">
+                                    <select className="select select-primary bg-white w-full mb-5">
                                         <option disabled selected>Select Brand</option>
                                         <option>BMW</option>
                                         <option>Lamborghini</option>
@@ -63,13 +63,13 @@ const Banner = () => {
                                         <option>Mazda</option>
                                         <option>Mercedes</option>
                                     </select>
-                                    <select class="select select-primary bg-white w-full mb-5">
+                                    <select className="select select-primary bg-white w-full mb-5">
                                         <option disabled selected>Select Model</option>
                                         <option>New edition 2022</option>
                                         <option>Super 16</option>
                                         <option>100 Modal</option>
                                     </select>
-                                    <select class="select select-primary bg-white w-full mb-5">
+                                    <select className="select select-primary bg-white w-full mb-5">
                                         <option disabled selected>Select Engine</option>
                                         <option>Fi ABS</option>
                                         <option>Carbonator</option>
