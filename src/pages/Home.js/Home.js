@@ -2,6 +2,7 @@ import React from 'react';
 import { useQuery } from 'react-query';
 import Footer from '../../components/Footer';
 import PageLoading from '../../components/PageLoading';
+import ArrivingSoon from './ArrivingSoon';
 import Banner from './Banner';
 import BusinessSummary from './BusinessSummary';
 import Parts from './Parts';
@@ -17,6 +18,7 @@ const Home = () => {
             <Banner />
             <Parts data={data} />
             <BusinessSummary />
+            <ArrivingSoon />
             <Reviews />
             <Footer />
         </div>
