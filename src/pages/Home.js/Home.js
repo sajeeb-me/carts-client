@@ -10,8 +10,8 @@ import Parts from './Parts';
 import Reviews from './Reviews';
 
 const Home = () => {
-    const { data: allParts, isLoading: partsLoading } = useQuery('parts', () => fetch('http://localhost:5000/part').then(res => res.json()))
-    const { data: reviews, isLoading: reviewLoading } = useQuery('reviews', () => fetch('http://localhost:5000/review').then(res => res.json()))
+    const { data: allParts, isLoading: partsLoading } = useQuery('parts', () => fetch('https://blooming-caverns-13229.herokuapp.com/part').then(res => res.json()))
+    const { data: reviews, isLoading: reviewLoading } = useQuery('reviews', () => fetch('https://blooming-caverns-13229.herokuapp.com/review').then(res => res.json()))
 
     if (partsLoading || reviewLoading) {
         return <PageLoading />

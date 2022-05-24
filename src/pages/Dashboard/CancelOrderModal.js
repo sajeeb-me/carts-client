@@ -8,7 +8,7 @@ const CancelOrderModal = ({ deletingOrder, setDeletingOrder, refetch }) => {
     // console.log(deletingOrder);
 
     const handleDelete = id => {
-        fetch(`http://localhost:5000/order/${id}`, {
+        fetch(`https://blooming-caverns-13229.herokuapp.com/order/${id}`, {
             method: "DELETE",
             headers: {
                 'content-type': 'application/json',

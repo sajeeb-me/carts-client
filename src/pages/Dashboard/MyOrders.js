@@ -12,7 +12,7 @@ const MyOrders = () => {
     const [user] = useAuthState(auth)
     const [deletingOrder, setDeletingOrder] = useState(null)
 
-    const { data: orders, isLoading, refetch } = useQuery('order', () => fetch(`http://localhost:5000/order?email=${user?.email}`, {
+    const { data: orders, isLoading, refetch } = useQuery('order', () => fetch(`https://blooming-caverns-13229.herokuapp.com/order?email=${user?.email}`, {
         method: "GET",
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`
@@ -34,7 +34,7 @@ const MyOrders = () => {
 
     return (
         <section className='bg-white p-4 lg:p-8 h-screen w-full'>
-            <h1 className='text-xl font-semibold mb-5'>My Orders</h1>
+            <h1 className='text-xl font-semibold my-5'>My Orders</h1>
             <div>
                 <div className="overflow-x-auto">
                     <table className="table w-full">
@@ -52,7 +52,7 @@ const MyOrders = () => {
                         </thead>
                         <tbody>
                             {
-                                orders.map((order, index) => <tr key={order._id} className='hover'>
+                                orders?.map((order, index) => <tr key={order._id} className='hover'>
                                     <th>{index + 1}</th>
                                     <td>{order.productName}</td>
                                     <td>{order.quantity}</td>

@@ -18,7 +18,7 @@ const CheckoutForm = ({ parts }) => {
     const { _id, totalPrice, productName, quantity, name, email, address, phone } = parts;
 
     useEffect(() => {
-        fetch('http://localhost:5000/create-payment-intent', {
+        fetch('https://blooming-caverns-13229.herokuapp.com/create-payment-intent', {
             method: "POST",
             headers: {
                 'content-type': 'application/json',
@@ -59,6 +59,7 @@ const CheckoutForm = ({ parts }) => {
         if (processing) {
             return <PageLoading />
         }
+        console.log('processing:', processing);
 
         // confirm payment  
         const { paymentIntent, error: intentError } = await stripe.confirmCardPayment(
@@ -96,7 +97,7 @@ const CheckoutForm = ({ parts }) => {
                 phone
             }
 
-            fetch(`http://localhost:5000/order/${_id}`, {
+            fetch(`https://blooming-caverns-13229.herokuapp.com/order/${_id}`, {
                 method: "PATCH",
                 headers: {
                     'content-type': 'application/json',
@@ -141,7 +142,7 @@ const CheckoutForm = ({ parts }) => {
                 <div className='flex items-end'>
                     <button
                         type="submit"
-                        className='btn btn-primary btn-outline btn-sm mt-5'
+                        className='btn btn-primary btn-outline btn-sm mt-8'
                         disabled={!stripe || !clientSecret || success}>
                         Pay Now
                     </button>

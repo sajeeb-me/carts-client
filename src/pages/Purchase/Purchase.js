@@ -14,7 +14,7 @@ const Purchase = () => {
     const [user] = useAuthState(auth)
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
-    const { data: product, isLoading, refetch } = useQuery(['product', id], () => fetch(`http://localhost:5000/part/${id}`, {
+    const { data: product, isLoading, refetch } = useQuery(['product', id], () => fetch(`https://blooming-caverns-13229.herokuapp.com/part/${id}`, {
         method: "GET",
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`
@@ -49,7 +49,7 @@ const Purchase = () => {
             notes: data.notes
         }
         // console.log(submittedOrder);
-        fetch('http://localhost:5000/order', {
+        fetch('https://blooming-caverns-13229.herokuapp.com/order', {
             method: "POST",
             headers: {
                 'content-type': 'application/json',
@@ -150,7 +150,7 @@ const Purchase = () => {
                                 </label>
                             </div>
 
-                            <div className="form-control mb-5 w-full ml-10">
+                            <div className="form-control mb-5 w-1/2 md:w-full ml-10">
                                 <label className="label">
                                     <span className="label-text font-semibold">Quantity</span>
                                 </label>

@@ -13,7 +13,7 @@ const stripePromise = loadStripe('pk_test_51L0e9UKXLIT8vsGRYvQEWCxHR0302RSzSjpHM
 const Payment = () => {
     const { id } = useParams()
 
-    const { data: parts, isLoading } = useQuery(['parts', id], () => fetch(`http://localhost:5000/order/${id}`, {
+    const { data: parts, isLoading } = useQuery(['parts', id], () => fetch(`https://blooming-caverns-13229.herokuapp.com/order/${id}`, {
         method: "GET",
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`
@@ -37,8 +37,8 @@ const Payment = () => {
     return (
         <section className='bg-white p-4 lg:p-8 h-screen w-full'>
             <h1 className='text-xl font-semibold mb-5'>Make Payment</h1>
-            <div className="hero-content flex-col lg:flex-row h-    ">
-                <div className="card w-full h-full shadow-xl bg-base-100">
+            <div className="hero-content flex-col lg:flex-row items-start">
+                <div className="card w-full shadow-xl bg-base-100">
                     <div className="card-body">
                         <h1 className='text-primary-focus font-semibold'>Hello {name}</h1>
                         <p className='text-lg font-semibold'>Bill for : <span className='uppercase'>{productName}</span> </p>
@@ -84,7 +84,7 @@ const Payment = () => {
                         </section>
                     </div>
                 </div>
-                <div className="card w-full h-full shadow-xl bg-base-100">
+                <div className="card w-full h-52 shadow-xl bg-base-100">
                     <div className="card-body">
                         <Elements stripe={stripePromise}>
                             <CheckoutForm parts={parts} />
