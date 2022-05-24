@@ -97,7 +97,7 @@ const MyProfile = () => {
                                     </label>
                                     <input
                                         type="text"
-                                        {...register("profession")}
+                                        {...register("profession", { required: true })}
                                         className="input input-bordered w-full"
                                     />
                                 </div>
@@ -106,8 +106,8 @@ const MyProfile = () => {
                                         <span className="label-text font-semibold">Location</span>
                                     </label>
                                     <input
-                                        type="location"
-                                        {...register("name")}
+                                        type="text"
+                                        {...register("location", { required: true })}
                                         className="input input-bordered w-full"
                                     />
                                 </div>
@@ -121,7 +121,7 @@ const MyProfile = () => {
                                     </label>
                                     <input
                                         type="text"
-                                        {...register("phone")}
+                                        {...register("phone", { required: true })}
                                         className="input input-bordered w-full"
                                     />
                                 </div>
@@ -131,7 +131,7 @@ const MyProfile = () => {
                                     </label>
                                     <input
                                         type="url"
-                                        {...register("linkedin")}
+                                        {...register("linkedin", { required: true })}
                                         className="input input-bordered w-full"
                                     />
                                 </div>

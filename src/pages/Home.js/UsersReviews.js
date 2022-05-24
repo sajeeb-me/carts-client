@@ -22,12 +22,12 @@ const UsersReviews = ({ allReview }) => {
                 </div>
 
                 <div className='my-3'>
-                    <p>{review}</p>
+                    <p title={review}>{review.slice(0, 75)}</p>
                 </div>
 
                 <div>
                     <h6 className='text-lg font-semibold text-primary'>{name}</h6>
-                    <p className='font-semibold'><small>{profession}</small></p>
+                    <p className='font-semibold'><small>{profession ? profession : 'Not provided'}</small></p>
                 </div>
             </section>
         </div>

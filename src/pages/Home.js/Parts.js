@@ -11,7 +11,7 @@ const Parts = ({ allParts }) => {
             </div>
             <article className='max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 my-20'>
                 {
-                    allParts?.map(part => <PartCard key={part._id} part={part} />)
+                    allParts?.slice(0, 6).map(part => <PartCard key={part._id} part={part} />)
                 }
             </article>
         </section>
