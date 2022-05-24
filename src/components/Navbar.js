@@ -11,7 +11,7 @@ const Navbar = ({ children }) => {
 
     const navItems = [
         <li><NavLink className="rounded" to='/'>Home</NavLink></li>,
-        <li><NavLink className="rounded" to='/dashboard/my-orders'>Dashboard</NavLink></li>,
+        <li><NavLink className="rounded" to='/dashboard/my-profile'>Dashboard</NavLink></li>,
         <li><NavLink className="rounded" to='/blogs'>Blogs</NavLink></li>,
         <li><NavLink className="rounded" to='/portfolio'>Portfolio</NavLink></li>,
         <li>{

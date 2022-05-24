@@ -13,6 +13,10 @@ import { useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import Payment from './pages/Dashboard/Payment';
+import AdminsAndUsers from './pages/Dashboard/AdminsAndUsers';
+import ManageOrders from './pages/Dashboard/ManageOrders';
+import AddParts from './pages/Dashboard/AddParts';
+import ManageTools from './pages/Dashboard/ManageTools';
 
 function App() {
 
@@ -32,10 +36,14 @@ function App() {
           <Route element={<PrivateRoute />}>
             <Route path='/purchase/:id' element={<Purchase />} />
             <Route path='/dashboard' element={<Dashboard />} >
+              <Route path='my-profile' element={<MyProfile />} />
               <Route path='my-orders' element={<MyOrders />} />
               <Route path='payment/:id' element={<Payment />} />
               <Route path='add-review' element={<AddReview />} />
-              <Route path='my-profile' element={<MyProfile />} />
+              <Route path='admin-and-user' element={<AdminsAndUsers />} />
+              <Route path='manage-orders' element={<ManageOrders />} />
+              <Route path='add-part' element={<AddParts />} />
+              <Route path='manage-tools' element={<ManageTools />} />
             </Route>
           </Route>
         </Routes>
