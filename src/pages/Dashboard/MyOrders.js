@@ -79,7 +79,7 @@ const MyOrders = () => {
                                                 </label>
                                             </div>
                                             :
-                                            <p className='text-sm'>Not applicable after payment</p>}
+                                            <p className='text-center text-green-600 font-semibold'>Paid</p>}
                                     </td>
                                     <td>
                                         {(order.transitionId) ? <span className='text-xs'>{order.transitionId}</span> : 'N/A'}

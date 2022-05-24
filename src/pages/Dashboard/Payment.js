@@ -1,14 +1,19 @@
+import { Elements } from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
 import { signOut } from 'firebase/auth';
 import React from 'react';
 import { useQuery } from 'react-query';
 import { Navigate, useParams } from 'react-router-dom';
 import auth from '../../authentication/firebase.init';
 import PageLoading from '../../components/PageLoading';
+import CheckoutForm from './CheckoutForm';
+
+const stripePromise = loadStripe('pk_test_51L0e9UKXLIT8vsGRYvQEWCxHR0302RSzSjpHMvYk5uIRqJXzhEfAfXsDGSM45kzJjOXyk79u1gZmsM6KSXcULlrd00vAYSRIIu');
 
 const Payment = () => {
     const { id } = useParams()
 
-    const { data: parts, isLoading, refetch } = useQuery(['parts', id], () => fetch(`http://localhost:5000/order/${id}`, {
+    const { data: parts, isLoading } = useQuery(['parts', id], () => fetch(`http://localhost:5000/order/${id}`, {
         method: "GET",
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`
@@ -81,9 +86,9 @@ const Payment = () => {
                 </div>
                 <div className="card w-full h-full shadow-xl bg-base-100">
                     <div className="card-body">
-                        {/* <Elements stripe={stripePromise}>
-                            <CheckoutForm appointment={appointment} />
-                        </Elements> */}
+                        <Elements stripe={stripePromise}>
+                            <CheckoutForm parts={parts} />
+                        </Elements>
                     </div>
                 </div>
             </div>
