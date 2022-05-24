@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../authentication/firebase.init';
 import { signOut } from 'firebase/auth';
+import { toast } from 'react-toastify';
 
 const Purchase = () => {
     const navigate = useNavigate()
@@ -16,7 +17,6 @@ const Purchase = () => {
     const { data: product, isLoading, refetch } = useQuery('product', () => fetch(`http://localhost:5000/part/${id}`, {
         method: "GET",
         headers: {
-            'content-type': 'application/json',
             authorization: `Bearer ${localStorage.getItem('accessToken')}`
         },
     })
@@ -67,8 +67,12 @@ const Purchase = () => {
             })
             .then(data => {
                 console.log(data);
-                refetch();
-                reset();
+                if (data.acknowledged) {
+                    reset();
+                    toast.success(`Order placed for ${name}`)
+                    refetch();
+                    navigate('/dashboard/my-orders')
+                }
             })
     };
 
@@ -82,11 +86,11 @@ const Purchase = () => {
                     </figure>
                     <div className='mt-2 px-2'>
                         <p className='text-lg font-semibold'>Overview :</p>
-                        <p className='text-gray-600'>{overview}</p>
+                        <p className='text-gray-600 text-sm lg:text-base'>{overview}</p>
                     </div>
                 </div>
                 <div>
-                    <h1 className='text-2xl font-semibold text-primary-focus mb-8 text-center uppercase'>Fill this form to place order</h1>
+                    <h1 className='text-xl lg:text-2xl font-semibold text-primary-focus mb-8 text-center uppercase'>Fill this form to place order</h1>
                     <form onSubmit={handleSubmit(onSubmit)}>
                         {/* product information  */}
                         <p className='before:border before:border-primary font-semibold uppercase tracking-wider my-3'>Product Information</p>
@@ -130,8 +134,8 @@ const Purchase = () => {
                         </div>
 
                         {/* price and quantity  */}
-                        <div className='flex justify-between'>
-                            <div className="form-control mb-3">
+                        <div className='flex justify-between w-full'>
+                            <div className="form-control mb-3 w-full">
                                 <label className="label">
                                     <span className="label-text font-semibold">Unit Price</span>
                                 </label>
@@ -139,7 +143,7 @@ const Purchase = () => {
                                     <input
                                         type="text"
                                         value={price?.toLocaleString('en-US')}
-                                        className="input input-bordered font-semibold"
+                                        className="input input-bordered font-semibold w-full"
                                         disabled
                                     />
                                     <span>USD</span>

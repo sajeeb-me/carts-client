@@ -13,7 +13,7 @@ const DashboardSidebar = ({ children }) => {
             </div>
             <div className="drawer-side">
                 <label htmlFor="dashboard-drawer" className="drawer-overlay"></label>
-                <ul className="menu p-4 overflow-y-auto w-80 bg-base-300 text-base-content">
+                <ul className="bg-base-100 menu p-4 overflow-y-auto w-52">
                     {/* <!-- Sidebar content here --> */}
                     <li><NavLink to='/dashboard/my-orders'>My Orders</NavLink></li>
                     <li><NavLink to='/dashboard/add-review'>Add A Review</NavLink></li>

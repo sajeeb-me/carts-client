@@ -52,7 +52,7 @@ const Navbar = ({ children }) => {
             </div>
             <div className="drawer-side">
                 <label htmlFor="my-drawer-3" className="drawer-overlay"></label>
-                <ul className="menu p-4 overflow-y-auto w-80 bg-base-100">
+                <ul className="menu p-4 overflow-y-auto w-56 bg-base-100">
                     {/* <!-- Sidebar content here --> */}
                     {navItems}
 
