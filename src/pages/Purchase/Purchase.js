@@ -14,7 +14,7 @@ const Purchase = () => {
     const [user] = useAuthState(auth)
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
-    const { data: product, isLoading, refetch } = useQuery('product', () => fetch(`http://localhost:5000/part/${id}`, {
+    const { data: product, isLoading, refetch } = useQuery(['product', id], () => fetch(`http://localhost:5000/part/${id}`, {
         method: "GET",
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`

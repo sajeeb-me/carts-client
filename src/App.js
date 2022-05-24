@@ -12,6 +12,7 @@ import MyProfile from './pages/Dashboard/MyProfile';
 import { useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import Payment from './pages/Dashboard/Payment';
 
 function App() {
 
@@ -32,6 +33,7 @@ function App() {
             <Route path='/purchase/:id' element={<Purchase />} />
             <Route path='/dashboard' element={<Dashboard />} >
               <Route path='my-orders' element={<MyOrders />} />
+              <Route path='payment/:id' element={<Payment />} />
               <Route path='add-review' element={<AddReview />} />
               <Route path='my-profile' element={<MyProfile />} />
             </Route>
