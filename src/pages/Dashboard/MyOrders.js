@@ -72,7 +72,7 @@ const MyOrders = () => {
                                                     onClick={() => navigate(`/dashboard/payment/${order._id}`)}
                                                     className='btn btn-xs lg:btn-sm btn-primary text-white'>Pay now</button>
                                                 <label
-                                                    for="cancel-order-modal"
+                                                    htmlFor="cancel-order-modal"
                                                     onClick={() => setDeletingOrder(order)}
                                                     className="btn btn-xs lg:btn-sm btn-link text-secondary">
                                                     Cancel

@@ -4,12 +4,11 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../../authentication/firebase.init';
 
-const CancelOrderModal = ({ deletingOrder, setDeletingOrder, refetch }) => {
+const DeleteToolModal = ({ deletingTool, setDeletingTool, refetch }) => {
     const navigate = useNavigate();
-    // console.log(deletingOrder);
 
     const handleDelete = id => {
-        fetch(`https://blooming-caverns-13229.herokuapp.com/order/${id}`, {
+        fetch(`http://localhost:5000/part/${id}`, {
             method: "DELETE",
             headers: {
                 'content-type': 'application/json',
@@ -18,6 +17,7 @@ const CancelOrderModal = ({ deletingOrder, setDeletingOrder, refetch }) => {
         })
             .then(res => {
                 if (res.status === 401 || res.status === 403) {
+                    console.log(res);
                     signOut(auth)
                     localStorage.removeItem('accessToken')
                     navigate('/login')
@@ -25,30 +25,30 @@ const CancelOrderModal = ({ deletingOrder, setDeletingOrder, refetch }) => {
                 return res.json()
             })
             .then(data => {
-                // console.log(data);
+                console.log(data);
                 if (data.deletedCount) {
                     refetch()
-                    setDeletingOrder(null)
-                    toast.info(`Order for ${deletingOrder.productName} is canceled`)
+                    setDeletingTool(null)
+                    toast.info(`${deletingTool.name} is deleted`)
                 }
             })
     }
 
     return (
         <div>
-            <input type="checkbox" id="cancel-order-modal" className="modal-toggle" />
+            <input type="checkbox" id="delete-tool-modal" className="modal-toggle" />
             <div className="modal modal-bottom sm:modal-middle">
                 <div className="modal-box relative">
-                    <label for="cancel-order-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-                    <h3 className="font-semibold lg:text-lg text-secondary">Canceling order for <span className='font-bold'>{deletingOrder.productName}</span> ?</h3>
+                    <label for="delete-tool-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                    <h3 className="font-semibold lg:text-lg text-secondary">Are you sure to delete <span className='font-bold'>{deletingTool.name}</span> ?</h3>
                     <p className="py-4">
-                        Canceled orders will remove from your my order list and you will not be able to see this order again.
+                        Deleted parts will be removed from your website and you won't see this Parts anymore.
                     </p>
                     <div className="modal-action">
                         <button
-                            onClick={() => handleDelete(deletingOrder._id)}
+                            onClick={() => handleDelete(deletingTool._id)}
                             className='btn btn-error text-white'>
-                            Cancel order
+                            Delete now
                         </button>
                     </div>
                 </div>
@@ -57,4 +57,4 @@ const CancelOrderModal = ({ deletingOrder, setDeletingOrder, refetch }) => {
     );
 };
 
-export default CancelOrderModal;
+export default DeleteToolModal;
