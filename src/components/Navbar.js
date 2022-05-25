@@ -16,7 +16,7 @@ const Navbar = ({ children }) => {
         <li><NavLink className="rounded" to='/portfolio'>Portfolio</NavLink></li>,
         <li>{
             user ?
-                <button className="rounded btn btn-secondary text-base-100" onClick={() => signOut(auth)}>Sign out</button>
+                <button className="rounded btn btn-secondary btn-outline text-base-100" onClick={() => signOut(auth)}>Sign out</button>
                 :
                 <button className="rounded btn btn-primary btn-outline" onClick={() => navigate('/login')}>Login</button>
 
