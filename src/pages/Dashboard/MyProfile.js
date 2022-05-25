@@ -28,7 +28,7 @@ const MyProfile = () => {
 
         const email = user.email
         if (email) {
-            fetch(`http://localhost:5000/profile/${email}`, {
+            fetch(`https://blooming-caverns-13229.herokuapp.com/profile/${email}`, {
                 method: "PATCH",
                 headers: {
                     'content-type': 'application/json',
@@ -55,8 +55,8 @@ const MyProfile = () => {
     };
 
     return (
-        <section className='bg-white p-4 lg:p-8 min-h-screen w-full'>
-            <h1 className='text-xl font-semibold my-5'>Profile of {user?.displayName}</h1>
+        <section className='bg-white p-4 lg:p-8 h-screen overflow-scroll w-full'>
+            <h1 className='text-xl font-semibold mb-5'>Profile of {user?.displayName}</h1>
             <div>
                 <section>
                     <div className='text-center mx-auto lg:shadow-xl rounded-xl p-10 m-10 border'>

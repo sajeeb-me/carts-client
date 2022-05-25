@@ -5,7 +5,7 @@ const RowOfAdminAndUser = ({ user, refetch, index }) => {
     const { email, role } = user;
 
     const makeAdmin = () => {
-        fetch(`http://localhost:5000/user/admin/${email}`, {
+        fetch(`https://blooming-caverns-13229.herokuapp.com/user/admin/${email}`, {
             method: "PATCH",
             headers: {
                 'content-type': 'application/json',

@@ -42,7 +42,7 @@ const DashboardSidebar = ({ children }) => {
                             <li><NavLink to='/dashboard/admin-and-user'>Admins &amp; Users</NavLink></li>
                             <li><NavLink to='/dashboard/manage-orders'>Manage all orders</NavLink></li>
                             <li><NavLink to='/dashboard/add-part'>Add a Part</NavLink></li>
-                            <li><NavLink to='/dashboard/manage-tools'>Manage all Tools</NavLink></li>
+                            <li><NavLink to='/dashboard/manage-tools'>Manage all Parts</NavLink></li>
                         </div>
                     }
                 </ul>

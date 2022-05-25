@@ -17,7 +17,7 @@ const AddReview = () => {
             ...data,
             name: user.displayName
         }
-        fetch('http://localhost:5000/review', {
+        fetch('https://blooming-caverns-13229.herokuapp.com/review', {
             method: "POST",
             headers: {
                 'content-type': 'application/json',
@@ -43,8 +43,8 @@ const AddReview = () => {
     };
 
     return (
-        <section className='bg-white p-4 lg:p-8 h-screen w-full'>
-            <h1 className='text-xl font-semibold my-5'>Add a review</h1>
+        <section className='bg-white p-4 lg:p-8 h-screen overflow-scroll w-full'>
+            <h1 className='text-xl font-semibold mb-5'>Add a review</h1>
             <div>
                 <section>
                     <div className='text-center mx-auto lg:shadow-xl rounded-xl p-10 m-10 border'>
@@ -79,9 +79,9 @@ const AddReview = () => {
                                         className={`input input-bordered  ${errors.rating && 'border-pink-600'}`}
                                     />
                                     <label className="label">
-                                        {errors.rating?.type === 'required' && <span className="label-text-alt text-pink-600">{errors.rating.message}</span>}
-                                        {errors.rating?.type === 'min' && <span className="label-text-alt text-pink-600">{errors.rating.message}</span>}
-                                        {errors.rating?.type === 'max' && <span className="label-text-alt text-pink-600">{errors.rating.message}</span>}
+                                        {errors.star?.type === 'required' && <span className="label-text-alt text-pink-600">{errors.star.message}</span>}
+                                        {errors.star?.type === 'min' && <span className="label-text-alt text-pink-600">{errors.star.message}</span>}
+                                        {errors.star?.type === 'max' && <span className="label-text-alt text-pink-600">{errors.star.message}</span>}
                                     </label>
                                 </div>
 

@@ -35,7 +35,7 @@ const Payment = () => {
     const { productName, unitPrice, quantity, totalPrice, name, email, address, phone } = parts;
 
     return (
-        <section className='bg-white p-4 lg:p-8 h-screen w-full'>
+        <section className='bg-white p-4 lg:p-8 h-screen overflow-scroll w-full'>
             <h1 className='text-xl font-semibold mb-5'>Make Payment</h1>
             <div className="hero-content flex-col lg:flex-row items-start">
                 <div className="card w-full shadow-xl bg-base-100">

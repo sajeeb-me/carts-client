@@ -22,7 +22,7 @@ const Banner = () => {
                         <div className="w-full max-w-2xl mb-12 xl:mb-0 xl:pr-16 xl:w-7/12">
                             <h2
                                 data-aos="fade-right"
-                                data-aos-delay="300"
+                                data-aos-delay="200"
                                 data-aos-duration="1000"
                                 className="max-w-2xl mb-6 text-4xl uppercase lg:text-5xl font-bold  text-white">
                                 Find your Car Parts <br className="hidden md:block mb-5" />
@@ -33,14 +33,14 @@ const Banner = () => {
                             </h2>
                             <p
                                 data-aos="fade-right"
-                                data-aos-delay="700"
+                                data-aos-delay="600"
                                 data-aos-duration="1000"
                                 className="max-w-xl mb-4 text-base text-gray-400 md:text-lg">
                                 We are manufacturing car parts since 1998 and serving them with best quality and a long time warranty.
                             </p>
                             <p
                                 data-aos="zoom-in-right"
-                                data-aos-delay="1400"
+                                data-aos-delay="1200"
                                 data-aos-duration="1000"
                             >
                                 <SecondaryOutlineButton>

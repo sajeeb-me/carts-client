@@ -115,7 +115,7 @@ const Purchase = () => {
                                 </label>
                                 <input
                                     type="text"
-                                    value={minOrder?.toLocaleString('en-US')}
+                                    value={parseInt(minOrder)?.toLocaleString('en-US')}
                                     className="input input-bordered w-full mb-3 font-semibold uppercase"
                                     disabled
                                 />
@@ -126,7 +126,7 @@ const Purchase = () => {
                                 </label>
                                 <input
                                     type="text"
-                                    value={available?.toLocaleString('en-US')}
+                                    value={parseInt(available)?.toLocaleString('en-US')}
                                     className="input input-bordered w-full mb-3 font-semibold uppercase"
                                     disabled
                                 />
@@ -142,7 +142,7 @@ const Purchase = () => {
                                 <label className="input-group">
                                     <input
                                         type="text"
-                                        value={price?.toLocaleString('en-US')}
+                                        value={parseInt(price)?.toLocaleString('en-US')}
                                         className="input input-bordered font-semibold w-full"
                                         disabled
                                     />
