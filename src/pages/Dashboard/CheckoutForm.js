@@ -3,7 +3,6 @@ import { signOut } from 'firebase/auth';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import auth from '../../authentication/firebase.init';
-import PageLoading from '../../components/PageLoading';
 
 const CheckoutForm = ({ parts }) => {
     const stripe = useStripe();
@@ -16,6 +15,7 @@ const CheckoutForm = ({ parts }) => {
     const [clientSecret, setClientSecret] = useState("");
 
     const { _id, totalPrice, productName, quantity, name, email, address, phone } = parts;
+
 
     useEffect(() => {
         fetch('https://blooming-caverns-13229.herokuapp.com/create-payment-intent', {
@@ -53,13 +53,8 @@ const CheckoutForm = ({ parts }) => {
 
         setCardError(error?.message || '');
         setSuccess('');
-
         setProcessing(true);
 
-        if (processing) {
-            return <PageLoading />
-        }
-        console.log('processing:', processing);
 
         // confirm payment  
         const { paymentIntent, error: intentError } = await stripe.confirmCardPayment(
@@ -142,8 +137,8 @@ const CheckoutForm = ({ parts }) => {
                 <div className='flex items-end'>
                     <button
                         type="submit"
-                        className='btn btn-primary btn-outline btn-sm mt-8'
-                        disabled={!stripe || !clientSecret || success}>
+                        className={`btn btn-primary btn-outline btn-sm mt-8 ${processing && 'loading'}`}
+                        disabled={!stripe || !clientSecret || success || processing}>
                         Pay Now
                     </button>
                     {

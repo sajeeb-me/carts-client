@@ -41,7 +41,11 @@ const MyPortfolio = () => {
                 <article className='grid lg:grid-cols-2 items-center'>
                     {/* about me  */}
                     <div className='order-2 lg:order-1'>
-                        <h1 className='text-3xl lg:text-6xl font-serif'>Hello, My name is <span className='font-bold'>Sajeeb Das Shuvo</span></h1>
+                        <h1 className='text-3xl lg:text-5xl font-serif'>
+                            Hello, My name is
+                            <br />
+                            <span className='font-bold text-4xl lg:text-6xl'>Sajeeb Das Shuvo</span>
+                        </h1>
                         <div className='my-5 text-lg'>
                             <p className='flex items-center'><span className='text-xl mr-2'><MdMarkEmailRead /></span>  hellosdshuvo@gmail.com</p>
                             <p className='flex items-center'><span className='text-xl mr-2'><MdSchool /></span>  Hon's 3rd Year, National University</p>
