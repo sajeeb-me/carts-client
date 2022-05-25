@@ -31,7 +31,7 @@ const RowOfAdminAndUser = ({ user, refetch, index }) => {
         <tr className='hover'>
             <th>{index + 1}</th>
             <td>{email}</td>
-            <td>{
+            <td className='text-right'>{
                 role ||
                 <button onClick={makeAdmin} className="btn btn-sm btn-primary text-white">Make admin</button>
             }</td>

@@ -37,7 +37,7 @@ const AdminsAndUsers = () => {
                                     <tr>
                                         <th></th>
                                         <th>Email</th>
-                                        <th>Make admin</th>
+                                        <th className='text-right'>Make admin</th>
                                     </tr>
                                 </thead>
                                 <tbody>

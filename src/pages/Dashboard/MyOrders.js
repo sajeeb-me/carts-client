@@ -34,7 +34,7 @@ const MyOrders = () => {
 
     return (
         <section className='bg-white p-4 lg:p-8 h-screen overflow-scroll w-full'>
-            <h1 className='text-xl font-semibold my-5'>My Orders</h1>
+            <h1 className='text-xl font-semibold mb-5'>My Orders</h1>
             <div>
                 <div className="overflow-x-auto">
                     <table className="table w-full">
