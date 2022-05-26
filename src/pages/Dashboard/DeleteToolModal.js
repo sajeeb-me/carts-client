@@ -8,7 +8,7 @@ const DeleteToolModal = ({ deletingTool, setDeletingTool, refetch }) => {
     const navigate = useNavigate();
 
     const handleDelete = id => {
-        fetch(`http://localhost:5000/part/${id}`, {
+        fetch(`https://blooming-caverns-13229.herokuapp.com/part/${id}`, {
             method: "DELETE",
             headers: {
                 'content-type': 'application/json',
@@ -39,7 +39,7 @@ const DeleteToolModal = ({ deletingTool, setDeletingTool, refetch }) => {
             <input type="checkbox" id="delete-tool-modal" className="modal-toggle" />
             <div className="modal modal-bottom sm:modal-middle">
                 <div className="modal-box relative">
-                    <label for="delete-tool-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                    <label htmlFor="delete-tool-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
                     <h3 className="font-semibold lg:text-lg text-secondary">Are you sure to delete <span className='font-bold'>{deletingTool.name}</span> ?</h3>
                     <p className="py-4">
                         Deleted parts will be removed from your website and you won't see this Parts anymore.

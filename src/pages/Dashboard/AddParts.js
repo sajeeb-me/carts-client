@@ -20,7 +20,7 @@ const AddParts = () => {
             importedBy: user.email
         }
         // console.log(importedPart);
-        fetch('http://localhost:5000/part', {
+        fetch('https://blooming-caverns-13229.herokuapp.com/part', {
             method: "POST",
             headers: {
                 'content-type': 'application/json',

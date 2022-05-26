@@ -12,7 +12,7 @@ const RowOfAllOrders = ({ order, refetch, index }) => {
         const orderStatus = {
             shipped: true
         }
-        fetch(`http://localhost:5000/all-order/${id}`, {
+        fetch(`https://blooming-caverns-13229.herokuapp.com/all-order/${id}`, {
             method: "PATCH",
             headers: {
                 'content-type': 'application/json',
@@ -65,7 +65,7 @@ const RowOfAllOrders = ({ order, refetch, index }) => {
                         }
                         {!order.transitionId ?
                             <label
-                                for="cancel-order-modal"
+                                htmlFor="cancel-order-modal"
                                 onClick={() => setDeletingOrder(order)}
                                 className="btn btn-xs btn-link text-secondary">
                                 Cancel

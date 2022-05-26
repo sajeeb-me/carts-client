@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import BlogCar1 from '../../assets/images/blog-car-1.jpg';
+import BlogCar2 from '../../assets/images/blog-car-2.jpg';
+import BlogCar3 from '../../assets/images/blog-car-3.jpg';
 
 const LatestBlogs = () => {
     return (
@@ -20,7 +22,7 @@ const LatestBlogs = () => {
                         />
                         <div className="p-5 border border-t-0">
                             <p className="text-xs font-semibold tracking-wider uppercase text-gray-600">
-                                21 Mar 2022
+                                21 JUNE 2022
                             </p>
                             <h1 className="text-2xl font-bold my-2">Why Miami headlight?</h1>
 
@@ -32,36 +34,36 @@ const LatestBlogs = () => {
                     </div>
                     <div className="overflow-hidden transition-shadow duration-300 bg-white rounded-xl shadow-lg">
                         <img
-                            src={BlogCar1}
+                            src={BlogCar2}
                             className="object-cover w-full h-64"
                             alt=""
                         />
                         <div className="p-5 border border-t-0">
                             <p className="text-xs font-semibold tracking-wider uppercase text-gray-600">
-                                21 Mar 2022
+                                23 MAY 2022
                             </p>
-                            <h1 className="text-2xl font-bold my-2">Why Miami headlight?</h1>
+                            <h1 className="text-2xl font-bold my-2">VW Camper Engine Bay?</h1>
 
                             <p className="mb-2 text-gray-600">
-                                Miami headlight has the best quality anti-fog system and it's save a lot of energy of your car battery.
+                                VW Camper Engine Bay is an amazing camper engine which have awesome performance.
                             </p>
                             <Link to='/' className='font-semibold'>Learn more</Link>
                         </div>
                     </div>
                     <div className="overflow-hidden transition-shadow duration-300 bg-white rounded-xl shadow-lg">
                         <img
-                            src={BlogCar1}
+                            src={BlogCar3}
                             className="object-cover w-full h-64"
                             alt=""
                         />
                         <div className="p-5 border border-t-0">
                             <p className="text-xs font-semibold tracking-wider uppercase text-gray-600">
-                                21 Mar 2022
+                                21 APRIL 2022
                             </p>
-                            <h1 className="text-2xl font-bold my-2">Why Miami headlight?</h1>
+                            <h1 className="text-2xl font-bold my-2">BMW Gearstick 4-series</h1>
 
                             <p className="mb-2 text-gray-600">
-                                Miami headlight has the best quality anti-fog system and it's save a lot of energy of your car battery.
+                                BMW Gearstick 4-series is a easily siftable gearstick for BMW car proved by last Test in 2022.
                             </p>
                             <Link to='/' className='font-semibold'>Learn more</Link>
                         </div>

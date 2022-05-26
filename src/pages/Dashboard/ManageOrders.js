@@ -8,7 +8,7 @@ import RowOfAllOrders from './RowOfAllOrders';
 
 const ManageOrders = () => {
     const navigate = useNavigate();
-    const { data: orders, isLoading, refetch } = useQuery('orders', () => fetch('http://localhost:5000/all-order', {
+    const { data: orders, isLoading, refetch } = useQuery('orders', () => fetch('https://blooming-caverns-13229.herokuapp.com/all-order', {
         method: 'GET',
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`

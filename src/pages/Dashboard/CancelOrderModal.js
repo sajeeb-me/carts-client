@@ -39,7 +39,7 @@ const CancelOrderModal = ({ deletingOrder, setDeletingOrder, refetch }) => {
             <input type="checkbox" id="cancel-order-modal" className="modal-toggle" />
             <div className="modal modal-bottom sm:modal-middle">
                 <div className="modal-box relative">
-                    <label for="cancel-order-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                    <label htmlFor="cancel-order-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
                     <h3 className="font-semibold lg:text-lg text-secondary">Canceling order for <span className='font-bold'>{deletingOrder.productName}</span> ?</h3>
                     <p className="py-4">
                         Canceled orders will remove from your my order list and you will not be able to see this order again.
