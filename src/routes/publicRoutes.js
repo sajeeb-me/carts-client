@@ -1,4 +1,5 @@
 import PageLoading from "../components/PageLoading";
+import AllParts from "../pages/AllParts/AllParts";
 import Blogs from "../pages/Blogs/Blogs";
 import Home from "../pages/Home.js/Home";
 import Login from "../pages/Login/Login";
@@ -9,6 +10,7 @@ import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
 
 export const publicRoute = [
     { path: '/', name: "Home", Component: Home },
+    { path: '/all-parts', name: "AllParts", Component: AllParts },
     { path: '/blogs', name: "Blogs", Component: Blogs },
     { path: '/portfolio', name: "MyPortfolio", Component: MyPortfolio },
     { path: '/login', name: "Login", Component: Login },

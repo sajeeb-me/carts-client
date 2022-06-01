@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../authentication/firebase.init';
 import PageLoading from '../../components/PageLoading';
@@ -13,19 +13,45 @@ const MyProfile = () => {
     const { register, handleSubmit, reset } = useForm();
     const [user, isLoading] = useAuthState(auth)
     const [usersProfile, isUserLoading, refetch] = useProfile(user)
+    const [imageLoading, setImageLoading] = useState(false)
+    const [imgURL, setImgURL] = useState('')
 
     if (isLoading || isUserLoading) {
         return <PageLoading />
     }
 
+    const handleUploadImage = e => {
+        setImageLoading(true)
+        const img = (e.target.files[0]);
+        const formData = new FormData();
+        formData.append('image', img);
+
+        fetch(`https://api.imgbb.com/1/upload?key=c1e87660595242c0175f82bb850d3e15`, {
+            method: 'POST',
+            body: formData
+        })
+            .then(res => res.json())
+            .then(result => {
+                if (result.success) {
+                    const image = result.data.url;
+                    setImgURL(image)
+                    setImageLoading(false)
+                    console.log(image);
+                }
+            })
+    }
+
     const onSubmit = async (data) => {
+
         const profileInfo = {
             ...data,
+            image: imgURL,
             name: user.displayName,
             email: user.email
         }
         // console.log(profileInfo);
 
+        // send to database
         const email = user.email
         if (email) {
             fetch(`https://blooming-caverns-13229.herokuapp.com/profile/${email}`, {
@@ -48,6 +74,7 @@ const MyProfile = () => {
                     console.log(data);
                     if (data.acknowledged) {
                         reset();
+                        setImageLoading(false)
                         toast.success('Profile updated successfully.')
                     }
                     refetch()
@@ -97,10 +124,10 @@ const MyProfile = () => {
                                         <span className="label-text font-semibold">Image url</span>
                                     </label>
                                     <input
-                                        type="url"
-                                        defaultValue={usersProfile?.image}
-                                        {...register("image")}
-                                        className="input input-bordered w-full"
+                                        type="file"
+                                        onChange={handleUploadImage}
+                                        className="input input-bordered w-full pt-1"
+                                        disabled={imageLoading}
                                     />
                                 </div>
                                 <div className="form-control w-full">
@@ -165,7 +192,12 @@ const MyProfile = () => {
                             </div>
 
                             {/* submit button  */}
-                            <input type="submit" value="Update profile" className="w-full btn btn-primary font-semibold text-white bg-gradient-to-r from-secondary to-primary border-0 mt-8 tracking-wider" />
+                            <input
+                                type="submit"
+                                value="Update profile"
+                                className="w-full btn btn-primary font-semibold text-white bg-gradient-to-r from-secondary to-primary border-0 mt-8 tracking-wider"
+                                disabled={imageLoading}
+                            />
                         </form>
                     </div>
                 </section>

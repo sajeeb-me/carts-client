@@ -1,5 +1,5 @@
 import { signOut } from 'firebase/auth';
-import React from 'react';
+import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from "react-hook-form";
 import { useNavigate } from 'react-router-dom';
@@ -13,18 +13,43 @@ const AddReview = () => {
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const [user, isLoading] = useAuthState(auth)
     const [usersProfile, isUserLoading, refetch] = useProfile(user)
+    const [imageLoading, setImageLoading] = useState(false)
+    const [imgURL, setImgURL] = useState('')
 
     if (isLoading || isUserLoading) {
         return <PageLoading />
     }
 
+    const handleUploadImage = e => {
+        setImageLoading(true)
+        const img = (e.target.files[0]);
+        const formData = new FormData();
+        formData.append('image', img);
 
+        fetch(`https://api.imgbb.com/1/upload?key=c1e87660595242c0175f82bb850d3e15`, {
+            method: 'POST',
+            body: formData
+        })
+            .then(res => res.json())
+            .then(result => {
+                if (result.success) {
+                    const image = result.data.url;
+                    setImgURL(image)
+                    setImageLoading(false)
+                    console.log(image);
+                }
+            })
+    }
 
     const onSubmit = async (data) => {
+
         const review = {
             ...data,
+            image: usersProfile.image || imgURL,
             name: user.displayName
         }
+        // console.log(review);
+
         fetch('https://blooming-caverns-13229.herokuapp.com/review', {
             method: "POST",
             headers: {
@@ -45,10 +70,12 @@ const AddReview = () => {
                 console.log(data);
                 if (data.acknowledged) {
                     reset();
+                    setImageLoading(false)
                     toast.success('Thanks for your review. You will find your review at our homepage.')
-                    refetch()
                 }
+                refetch()
             })
+
     };
 
     return (
@@ -96,14 +123,22 @@ const AddReview = () => {
                                     <label className="label">
                                         <span className="label-text font-semibold">Image url</span>
                                     </label>
-                                    <input
-                                        type="url"
-                                        defaultValue={usersProfile?.image}
-                                        placeholder='Provide your image url here'
-                                        {...register("image")}
-                                        className="input input-bordered w-full"
-                                        readOnly={usersProfile?.image}
-                                    />
+                                    {
+                                        usersProfile?.image ?
+                                            <input
+                                                type="text"
+                                                placeholder='Image will be collected from your profile'
+                                                className="input input-bordered w-full pt-1 placeholder:font-bold"
+                                                disabled
+                                            />
+                                            :
+                                            <input
+                                                type="file"
+                                                onChange={handleUploadImage}
+                                                className="input input-bordered w-full pt-1"
+                                                disabled={imageLoading}
+                                            />
+                                    }
                                 </div>
 
                                 <div className="form-control w-full">
@@ -133,7 +168,12 @@ const AddReview = () => {
                             </div>
 
                             {/* submit button  */}
-                            <input type="submit" value="Update profile" className="w-full btn btn-primary font-semibold text-white bg-gradient-to-r from-secondary to-primary border-0 mt-8 tracking-wider" />
+                            <input
+                                type="submit"
+                                value="Update profile"
+                                className="w-full btn btn-primary font-semibold text-white bg-gradient-to-r from-secondary to-primary border-0 mt-8 tracking-wider"
+                                disabled={imageLoading}
+                            />
                         </form>
                     </div>
                 </section>

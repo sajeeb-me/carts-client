@@ -5,7 +5,7 @@ import auth from "../authentication/firebase.init";
 
 const useProfile = (user) => {
     const navigate = useNavigate();
-    const { data: usersProfile, isLoading: isUserLoading, refetch } = useQuery(['usersProfile', user?.email], () => fetch(`http://localhost:5000/profile?email=${user?.email}`, {
+    const { data: usersProfile, isLoading: isUserLoading, refetch } = useQuery(['usersProfile', user?.email], () => fetch(`https://blooming-caverns-13229.herokuapp.com/profile?email=${user?.email}`, {
         method: 'GET',
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`

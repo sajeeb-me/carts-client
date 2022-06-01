@@ -30,13 +30,13 @@ const Navbar = ({ children }) => {
                                 <img src={usersProfile?.image ? usersProfile?.image : 'https://i.ibb.co/5sWZQdg/default-images.jpg'} alt='' />
                             </div>
                         </label>
-                        <ul tabIndex="0" className="dropdown-content menu p-5 shadow bg-base-100 rounded-box w-52">
+                        <ul tabIndex="0" className="dropdown-content menu p-5 shadow bg-base-100 rounded-box w-40 lg:w-52">
                             <div className="avatar">
-                                <div className="w-12 mx-auto rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                                <div className="w-16 mx-auto rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
                                     <img src={usersProfile?.image ? usersProfile?.image : 'https://i.ibb.co/5sWZQdg/default-images.jpg'} alt='' />
                                 </div>
                             </div>
-                            <Link to='/dashboard/my-profile' className='text-center my-4 text-sm font-semibold'>{user?.displayName}</Link>
+                            <Link to='/dashboard/my-profile' className='text-center my-4 font-bold hover:text-primary-focus'>{user?.displayName}</Link>
                             <p className='text-center'>
                                 <button className="rounded btn btn-secondary btn-sm btn-outline text-base-100" onClick={() => signOut(auth)}>Sign out</button>
                             </p>

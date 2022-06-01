@@ -1,7 +1,8 @@
 import React from 'react';
-import { useQuery } from 'react-query';
 import Footer from '../../components/Footer';
 import PageLoading from '../../components/PageLoading';
+import useAllParts from '../../hooks/useAllParts';
+import useReviews from '../../hooks/useReviews';
 import ArrivingSoon from './ArrivingSoon';
 import Banner from './Banner';
 import BusinessSummary from './BusinessSummary';
@@ -11,9 +12,8 @@ import Reviews from './Reviews';
 
 const Home = () => {
 
-    const { data: allParts, isLoading: partsLoading } = useQuery('parts', () => fetch('https://blooming-caverns-13229.herokuapp.com/part').then(res => res.json()))
-
-    const { data: reviews, isLoading: reviewLoading } = useQuery('reviews', () => fetch('https://blooming-caverns-13229.herokuapp.com/review').then(res => res.json()))
+    const [allParts, partsLoading] = useAllParts();
+    const [reviews, reviewLoading] = useReviews();
 
     if (partsLoading || reviewLoading) {
         return <PageLoading />
