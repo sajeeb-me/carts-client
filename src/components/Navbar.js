@@ -3,11 +3,13 @@ import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../authentication/firebase.init';
+import useProfile from '../hooks/useProfile';
 
 const Navbar = ({ children }) => {
     const navigate = useNavigate();
     const { pathname } = useLocation();
     const [user] = useAuthState(auth)
+    const [usersProfile] = useProfile(user)
 
     const navItems = [
         <li><NavLink className="rounded" to='/'>Home</NavLink></li>,
@@ -25,16 +27,16 @@ const Navbar = ({ children }) => {
                     <div className="dropdown lg:dropdown-end">
                         <label tabIndex="0" className="avatar online">
                             <div className="w-8 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                                <img src='https://i.ibb.co/5sWZQdg/default-images.jpg' alt='' />
+                                <img src={usersProfile?.image ? usersProfile?.image : 'https://i.ibb.co/5sWZQdg/default-images.jpg'} alt='' />
                             </div>
                         </label>
-                        <ul tabIndex="0" className="dropdown-content menu p-4 shadow bg-base-100 rounded-box w-40">
+                        <ul tabIndex="0" className="dropdown-content menu p-5 shadow bg-base-100 rounded-box w-52">
                             <div className="avatar">
-                                <div className="w-8 mx-auto rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                                    <img src='https://i.ibb.co/5sWZQdg/default-images.jpg' alt='' />
+                                <div className="w-12 mx-auto rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                                    <img src={usersProfile?.image ? usersProfile?.image : 'https://i.ibb.co/5sWZQdg/default-images.jpg'} alt='' />
                                 </div>
                             </div>
-                            <p className='text-center my-3 text-sm'>{user?.displayName}</p>
+                            <Link to='/dashboard/my-profile' className='text-center my-4 text-sm font-semibold'>{user?.displayName}</Link>
                             <p className='text-center'>
                                 <button className="rounded btn btn-secondary btn-sm btn-outline text-base-100" onClick={() => signOut(auth)}>Sign out</button>
                             </p>

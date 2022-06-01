@@ -6,15 +6,15 @@ import { useForm } from "react-hook-form";
 import { signOut } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import useProfile from '../../hooks/useProfile';
 
 const MyProfile = () => {
     const navigate = useNavigate();
-
     const { register, handleSubmit, reset } = useForm();
-
     const [user, isLoading] = useAuthState(auth)
+    const [usersProfile, isUserLoading, refetch] = useProfile(user)
 
-    if (isLoading) {
+    if (isLoading || isUserLoading) {
         return <PageLoading />
     }
 
@@ -50,6 +50,7 @@ const MyProfile = () => {
                         reset();
                         toast.success('Profile updated successfully.')
                     }
+                    refetch()
                 })
         }
     };
@@ -89,14 +90,26 @@ const MyProfile = () => {
                                 </div>
                             </div>
 
-                            {/* education and location  */}
+                            {/* image, education and location  */}
                             <div className='flex flex-col lg:flex-row gap-5 my-3'>
+                                <div className="form-control w-full">
+                                    <label className="label">
+                                        <span className="label-text font-semibold">Image url</span>
+                                    </label>
+                                    <input
+                                        type="url"
+                                        defaultValue={usersProfile?.image}
+                                        {...register("image")}
+                                        className="input input-bordered w-full"
+                                    />
+                                </div>
                                 <div className="form-control w-full">
                                     <label className="label">
                                         <span className="label-text font-semibold">Profession / Education</span>
                                     </label>
                                     <input
                                         type="text"
+                                        defaultValue={usersProfile?.profession}
                                         {...register("profession", { required: true })}
                                         className="input input-bordered w-full"
                                     />
@@ -107,6 +120,7 @@ const MyProfile = () => {
                                     </label>
                                     <input
                                         type="text"
+                                        defaultValue={usersProfile?.location}
                                         {...register("location", { required: true })}
                                         className="input input-bordered w-full"
                                     />
@@ -121,6 +135,7 @@ const MyProfile = () => {
                                     </label>
                                     <input
                                         type="text"
+                                        defaultValue={usersProfile?.phone}
                                         {...register("phone", { required: true })}
                                         className="input input-bordered w-full"
                                     />
@@ -131,7 +146,8 @@ const MyProfile = () => {
                                     </label>
                                     <input
                                         type="url"
-                                        {...register("linkedin", { required: true })}
+                                        defaultValue={usersProfile?.linkedin}
+                                        {...register("linkedin")}
                                         className="input input-bordered w-full"
                                     />
                                 </div>
@@ -141,6 +157,7 @@ const MyProfile = () => {
                                     </label>
                                     <input
                                         type="url"
+                                        defaultValue={usersProfile?.github}
                                         {...register("github")}
                                         className="input input-bordered w-full"
                                     />

@@ -5,12 +5,20 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../../authentication/firebase.init';
+import PageLoading from '../../components/PageLoading';
+import useProfile from '../../hooks/useProfile';
 
 const AddReview = () => {
-    const [user] = useAuthState(auth)
     const navigate = useNavigate();
-
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
+    const [user, isLoading] = useAuthState(auth)
+    const [usersProfile, isUserLoading, refetch] = useProfile(user)
+
+    if (isLoading || isUserLoading) {
+        return <PageLoading />
+    }
+
+
 
     const onSubmit = async (data) => {
         const review = {
@@ -38,6 +46,7 @@ const AddReview = () => {
                 if (data.acknowledged) {
                     reset();
                     toast.success('Thanks for your review. You will find your review at our homepage.')
+                    refetch()
                 }
             })
     };
@@ -52,8 +61,6 @@ const AddReview = () => {
                         <form onSubmit={handleSubmit(onSubmit)}>
 
 
-
-                            {/* education and location  */}
                             <div className='flex flex-col lg:flex-row gap-5'>
                                 <div className="form-control w-full">
                                     <label className="label">
@@ -91,9 +98,11 @@ const AddReview = () => {
                                     </label>
                                     <input
                                         type="url"
+                                        defaultValue={usersProfile?.image}
                                         placeholder='Provide your image url here'
                                         {...register("image")}
                                         className="input input-bordered w-full"
+                                        readOnly={usersProfile?.image}
                                     />
                                 </div>
 
@@ -103,9 +112,11 @@ const AddReview = () => {
                                     </label>
                                     <input
                                         type="text"
+                                        defaultValue={usersProfile?.profession}
                                         placeholder='Your profession'
                                         {...register("profession")}
                                         className="input input-bordered w-full"
+                                        readOnly={usersProfile?.profession}
                                     />
                                 </div>
                             </div>
