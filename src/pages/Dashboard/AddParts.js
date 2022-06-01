@@ -40,7 +40,7 @@ const AddParts = () => {
                 console.log(data);
                 if (data.acknowledged) {
                     reset();
-                    toast.success(data.name, 'is successfully imported.')
+                    toast.success('Tool imported successfully.')
                 }
             })
     };

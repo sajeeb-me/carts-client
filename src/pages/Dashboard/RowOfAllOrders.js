@@ -10,6 +10,7 @@ const RowOfAllOrders = ({ order, refetch, index }) => {
     const handleShipment = id => {
         setShipmentLoading(true)
         const orderStatus = {
+            emailNotification: order.email,
             shipped: true
         }
         fetch(`https://blooming-caverns-13229.herokuapp.com/all-order/${id}`, {
