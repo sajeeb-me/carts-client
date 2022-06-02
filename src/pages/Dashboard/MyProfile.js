@@ -12,7 +12,7 @@ const MyProfile = () => {
     const navigate = useNavigate();
     const { register, handleSubmit, reset } = useForm();
     const [user, isLoading] = useAuthState(auth)
-    const [usersProfile, isUserLoading, refetch] = useProfile(user)
+    const [usersProfile, isUserLoading] = useProfile(user)
     const [imageLoading, setImageLoading] = useState(false)
     const [imgURL, setImgURL] = useState('')
 
@@ -77,7 +77,6 @@ const MyProfile = () => {
                         setImageLoading(false)
                         toast.success('Profile updated successfully.')
                     }
-                    refetch()
                 })
         }
     };

@@ -12,7 +12,7 @@ const AddReview = () => {
     const navigate = useNavigate();
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const [user, isLoading] = useAuthState(auth)
-    const [usersProfile, isUserLoading, refetch] = useProfile(user)
+    const [usersProfile, isUserLoading] = useProfile(user)
     const [imageLoading, setImageLoading] = useState(false)
     const [imgURL, setImgURL] = useState('')
 
@@ -73,7 +73,6 @@ const AddReview = () => {
                     setImageLoading(false)
                     toast.success('Thanks for your review. You will find your review at our homepage.')
                 }
-                refetch()
             })
 
     };
