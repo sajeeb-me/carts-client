@@ -1,5 +1,5 @@
 import { signOut } from 'firebase/auth';
-import React from 'react';
+import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from "react-hook-form";
 import { useNavigate } from 'react-router-dom';
@@ -7,40 +7,57 @@ import { toast } from 'react-toastify';
 import auth from '../../authentication/firebase.init';
 
 const AddParts = () => {
-
+    const [imageLoading, setImageLoading] = useState(false)
     const [user] = useAuthState(auth)
     const navigate = useNavigate();
 
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
     const onSubmit = async (data) => {
+        setImageLoading(true)
+        const img = data.image[0];
+        const formData = new FormData();
+        formData.append('image', img)
 
-        const importedPart = {
-            ...data,
-            importedBy: user.email
-        }
-        // console.log(importedPart);
-        fetch('https://blooming-caverns-13229.herokuapp.com/part', {
-            method: "POST",
-            headers: {
-                'content-type': 'application/json',
-                authorization: `Bearer ${localStorage.getItem('accessToken')}`
-            },
-            body: JSON.stringify(importedPart)
+        fetch('https://api.imgbb.com/1/upload?key=c1e87660595242c0175f82bb850d3e15', {
+            method: 'POST',
+            body: formData
         })
-            .then(res => {
-                if (res.status === 401 || res.status === 403) {
-                    localStorage.removeItem('accessToken')
-                    signOut(auth)
-                    navigate('/login')
-                }
-                return res.json()
-            })
-            .then(data => {
-                console.log(data);
-                if (data.acknowledged) {
-                    reset();
-                    toast.success('Tool imported successfully.')
+            .then(res => res.json())
+            .then(result => {
+                if (result.success) {
+                    const image = result.data.url;
+                    const importedPart = {
+                        ...data,
+                        image,
+                        importedBy: user.email
+                    }
+                    // console.log(importedPart);
+                    fetch('https://blooming-caverns-13229.herokuapp.com/part', {
+                        method: "POST",
+                        headers: {
+                            'content-type': 'application/json',
+                            authorization: `Bearer ${localStorage.getItem('accessToken')}`
+                        },
+                        body: JSON.stringify(importedPart)
+                    })
+                        .then(res => {
+                            if (res.status === 401 || res.status === 403) {
+                                localStorage.removeItem('accessToken')
+                                signOut(auth)
+                                navigate('/login')
+                                setImageLoading(false)
+                            }
+                            return res.json()
+                        })
+                        .then(data => {
+                            console.log(data);
+                            if (data.acknowledged) {
+                                reset();
+                                setImageLoading(false)
+                                toast.success(`${importedPart.name} is imported successfully`)
+                            }
+                        })
                 }
             })
     };
@@ -82,14 +99,14 @@ const AddParts = () => {
                                         <span className="label-text font-semibold">Product Image url</span>
                                     </label>
                                     <input
-                                        type="url"
+                                        type="file"
                                         {...register("image", {
                                             required: {
                                                 value: true,
-                                                message: "Image url is required"
+                                                message: "Image is required"
                                             }
                                         })}
-                                        className={`input input-bordered  ${errors.image && 'border-pink-600'}`}
+                                        className={`input input-bordered pt-1  ${errors.image && 'border-pink-600'}`}
                                     />
                                     <label className="label">
                                         {errors.image?.type === 'required' && <span className="label-text-alt text-pink-600">{errors.image.message}</span>}
@@ -177,7 +194,12 @@ const AddParts = () => {
                             </div>
 
                             {/* submit button  */}
-                            <input type="submit" value="Update profile" className="w-full btn btn-primary font-semibold text-white bg-gradient-to-r from-secondary to-primary border-0 mt-8 tracking-wider" />
+                            <input
+                                type="submit"
+                                value="Update profile"
+                                className="w-full btn btn-primary font-semibold text-white bg-gradient-to-r from-secondary to-primary border-0 mt-8 tracking-wider"
+                                disabled={imageLoading}
+                            />
                         </form>
                     </div>
                 </section>

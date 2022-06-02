@@ -2,11 +2,14 @@ import React from 'react';
 import BannerImage from '../../assets/images/banner.jpg';
 import SecondaryOutlineButton from '../../components/SecondaryOutlineButton';
 import { BsArrowRight } from 'react-icons/bs';
+import { useNavigate } from 'react-router-dom';
 
 const Banner = () => {
+    const navigate = useNavigate()
 
     const handleSubmit = e => {
         e.preventDefault();
+        navigate('/all-parts')
     }
 
     return (
@@ -42,6 +45,8 @@ const Banner = () => {
                                 data-aos="zoom-in-right"
                                 data-aos-delay="1200"
                                 data-aos-duration="1000"
+                                onClick={() => navigate('/all-parts')}
+
                             >
                                 <SecondaryOutlineButton>
                                     Explore now

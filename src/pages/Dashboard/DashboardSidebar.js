@@ -4,6 +4,10 @@ import { NavLink } from 'react-router-dom';
 import auth from '../../authentication/firebase.init';
 import PageLoading from '../../components/PageLoading';
 import useAdmin from '../../hooks/useAdmin';
+import { FaRegUser, FaList } from 'react-icons/fa';
+import { BsChatLeftText, BsTools } from 'react-icons/bs';
+import { FiUsers } from 'react-icons/fi';
+import { BiMessageSquareAdd } from 'react-icons/bi';
 
 const DashboardSidebar = ({ children }) => {
     const [user] = useAuthState(auth);
@@ -24,25 +28,60 @@ const DashboardSidebar = ({ children }) => {
             </div>
             <div className="drawer-side">
                 <label htmlFor="dashboard-drawer" className="drawer-overlay"></label>
-                <ul className="bg-base-100 menu p-4 overflow-y-auto w-52">
+                <ul className="bg-base-100 menu p-4 overflow-y-auto w-56">
                     {/* <!-- Sidebar content here --> */}
-                    <li><NavLink to='/dashboard/my-profile'>My Profile</NavLink></li>
+                    <li>
+                        <NavLink to='/dashboard/my-profile'>
+                            <FaRegUser className='text-lg' />
+                            My Profile
+                        </NavLink>
+                    </li>
 
                     {
                         !admin &&
                         <div>
-                            <li><NavLink to='/dashboard/my-orders'>My Orders</NavLink></li>
-                            <li><NavLink to='/dashboard/add-review'>Add A Review</NavLink></li>
+                            <li>
+                                <NavLink to='/dashboard/my-orders'>
+                                    <FaList className='text-lg' />
+                                    My Orders
+                                </NavLink>
+                            </li>
+                            <li>
+                                <NavLink to='/dashboard/add-review'>
+                                    <BsChatLeftText className='text-lg' />
+                                    Add A Review
+                                </NavLink>
+                            </li>
                         </div>
                     }
 
                     {
                         admin &&
                         <div>
-                            <li><NavLink to='/dashboard/admin-and-user'>Admins &amp; Users</NavLink></li>
-                            <li><NavLink to='/dashboard/manage-orders'>Manage all orders</NavLink></li>
-                            <li><NavLink to='/dashboard/add-part'>Add a Part</NavLink></li>
-                            <li><NavLink to='/dashboard/manage-tools'>Manage all Parts</NavLink></li>
+                            <li>
+                                <NavLink to='/dashboard/admin-and-user'>
+                                    <FiUsers className='text-lg' />
+                                    Admins &amp; Users
+                                </NavLink>
+                            </li>
+                            <li>
+                                <NavLink to='/dashboard/manage-orders'>
+                                    <FaList className='text-lg' />
+                                    Manage all orders
+                                </NavLink>
+                            </li>
+                            <li>
+                                <NavLink to='/dashboard/add-part'>
+                                    <BiMessageSquareAdd className='text-2xl' />
+                                    Add a Part
+                                </NavLink>
+                            </li>
+                            <li>
+                                <NavLink to='/dashboard/manage-tools'>
+                                    <BsTools className='text-lg' />
+                                    Manage all Parts
+                                </NavLink>
+                            </li>
                         </div>
                     }
                 </ul>

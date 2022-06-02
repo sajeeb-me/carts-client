@@ -1,16 +1,15 @@
-import { signOut } from "firebase/auth";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import auth from "../authentication/firebase.init";
 
 const useProfile = (user) => {
     const navigate = useNavigate();
     const [usersProfile, setUsersProfile] = useState({});
-    const [isUserLoading, setIsUserLoading] = useState(true);
+    const [isUserLoading, setIsUserLoading] = useState(false);
 
     useEffect(() => {
         const email = user?.email;
         if (email) {
+            setIsUserLoading(true)
             fetch(`https://blooming-caverns-13229.herokuapp.com/profile?email=${email}`, {
                 method: 'GET',
                 headers: {
@@ -19,13 +18,14 @@ const useProfile = (user) => {
             })
                 .then(res => {
                     if (res.status === 401 || res.status === 403) {
-                        signOut(auth)
-                        localStorage.removeItem('accessToken')
-                        navigate('/login')
+                        // signOut(auth)
+                        // localStorage.removeItem('accessToken')
+                        // navigate('/login')
                     }
                     return res.json()
                 })
                 .then(data => {
+                    // console.log(data)
                     setUsersProfile(data)
                     setIsUserLoading(false)
                 })

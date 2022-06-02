@@ -4,7 +4,7 @@ import SemiboldSpan from '../../components/SemiboldSpan';
 const Blogs = () => {
 
     return (
-        <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-20 lg:py-20 overflow-x-scroll">
+        <div className="px-4 py-0 mx-auto max-w-full lg:max-w-screen-2xl lg:px-20 lg:py-10">
             <div className="mb-10 border-t border-b divide-y">
                 {/* question 1  */}
                 <div className="grid py-8 md:grid-cols-4">
@@ -177,7 +177,7 @@ const Blogs = () => {
                                 <li>
                                     After fetching , and when we get data then filter data by searchedText
                                     <p className='text-base pl-6 italic bg-base-200'>
-                                        const match = data.filter(product =&gt; (product.name).toLowerCase().includes((searchedText).toLowerCase()))
+                                        const match = data.filter(product =&gt; (product.name).toLowerCase().includes ((searchedText).toLowerCase()))
                                     </p>
                                 </li>
                                 <li>

@@ -74,7 +74,8 @@ const MyPortfolio = () => {
                                 </div>
                             </div>
                         </div>
-                        <a href='#project' >
+                        <a href='#project'>
+
                             <button className='btn btn-primary btn-outline'>
                                 Recent Projects
                                 <span className='ml-3 text-base'><BsArrowDownCircle /></span>
