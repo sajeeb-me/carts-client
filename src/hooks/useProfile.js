@@ -10,7 +10,7 @@ const useProfile = (user) => {
         const email = user?.email;
         if (email) {
             setIsUserLoading(true)
-            fetch(`https://blooming-caverns-13229.herokuapp.com/profile?email=${email}`, {
+            fetch(`http://localhost:5000/profile?email=${email}`, {
                 method: 'GET',
                 headers: {
                     authorization: `Bearer ${localStorage.getItem('accessToken')}`

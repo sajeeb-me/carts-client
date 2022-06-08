@@ -6,6 +6,11 @@ This project is for `Car Parts Manufacturer` who manufacture the parts of Car. T
 
 Click the link to view my live site: [https://carts-68435.web.app](https://carts-68435.web.app/)
 
+### `Admin Credentials`
+* Email :  admin@admin.com
+* Password : 123456
+
+
 ### `On this Project: `
 * In `Home` route you will get the overview about our site. You wil find total `Eight sections` there. `Header`, `Banner` (where Title, Image, Description, Price and one Button included), `Available Parts` (user will find first 6 parts here and also user can `purchase` any parts from here), `Our Business Summary` (user will see the business summary here), `Upcoming Arrival` (user will see the upcoming parts here and also can prebook), `What our Customers say` (user will see the customers reviews here), `Our Latest Blogs` (user will see the latest blog here) and `Footer`.
 * In `Blogs` section you will find the `answers of your 6 Questions`.
@@ -18,7 +23,7 @@ Click the link to view my live site: [https://carts-68435.web.app](https://carts
 * Google Firebase (for Authentication)
 * React Firebase Hooks (Firebase Hook)
 * ExpressJS (Node.js web application framework) - server site
-* MongoDB (NoSQL database)
+* MongoDB (NoSQL database) - stored all data here
 * JWT (JSON web Token)
 * Tailwind framework (CSS framework)
 * React Query
