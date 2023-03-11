@@ -8,7 +8,7 @@ const DeleteToolModal = ({ deletingTool, setDeletingTool, refetch }) => {
     const navigate = useNavigate();
 
     const handleDelete = id => {
-        fetch(`https://blooming-caverns-13229.herokuapp.com/part/${id}`, {
+        fetch(`https://carts-server.vercel.app/part/${id}`, {
             method: "DELETE",
             headers: {
                 'content-type': 'application/json',

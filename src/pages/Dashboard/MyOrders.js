@@ -12,7 +12,7 @@ const MyOrders = () => {
     const [user] = useAuthState(auth)
     const [deletingOrder, setDeletingOrder] = useState(null)
 
-    const { data: orders, isLoading, refetch } = useQuery('order', () => fetch(`https://blooming-caverns-13229.herokuapp.com/order?email=${user?.email}`, {
+    const { data: orders, isLoading, refetch } = useQuery('order', () => fetch(`https://carts-server.vercel.app/order?email=${user?.email}`, {
         method: "GET",
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`

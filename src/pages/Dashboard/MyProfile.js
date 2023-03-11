@@ -54,7 +54,7 @@ const MyProfile = () => {
         // send to database
         const email = user.email
         if (email) {
-            fetch(`https://blooming-caverns-13229.herokuapp.com/profile/${email}`, {
+            fetch(`https://carts-server.vercel.app/profile/${email}`, {
                 method: "PATCH",
                 headers: {
                     'content-type': 'application/json',

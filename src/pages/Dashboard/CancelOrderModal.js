@@ -9,7 +9,7 @@ const CancelOrderModal = ({ deletingOrder, setDeletingOrder, refetch }) => {
     // console.log(deletingOrder);
 
     const handleDelete = id => {
-        fetch(`https://blooming-caverns-13229.herokuapp.com/order/${id}`, {
+        fetch(`https://carts-server.vercel.app/order/${id}`, {
             method: "DELETE",
             headers: {
                 'content-type': 'application/json',

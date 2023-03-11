@@ -5,7 +5,7 @@ const useToken = user => {
     useEffect(() => {
         const email = user?.user?.email;
         if (email) {
-            fetch(`https://blooming-caverns-13229.herokuapp.com/user/${email}`, {
+            fetch(`https://carts-server.vercel.app/user/${email}`, {
                 method: 'PUT',
                 headers: {
                     'content-type': 'application/json'

@@ -33,7 +33,7 @@ const AddParts = () => {
                         importedBy: user.email
                     }
                     // console.log(importedPart);
-                    fetch('https://blooming-caverns-13229.herokuapp.com/part', {
+                    fetch('https://carts-server.vercel.app/part', {
                         method: "POST",
                         headers: {
                             'content-type': 'application/json',

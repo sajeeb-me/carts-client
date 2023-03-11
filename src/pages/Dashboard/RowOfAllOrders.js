@@ -13,7 +13,7 @@ const RowOfAllOrders = ({ order, refetch, index }) => {
             emailNotification: order.email,
             shipped: true
         }
-        fetch(`https://blooming-caverns-13229.herokuapp.com/all-order/${id}`, {
+        fetch(`https://carts-server.vercel.app/all-order/${id}`, {
             method: "PATCH",
             headers: {
                 'content-type': 'application/json',

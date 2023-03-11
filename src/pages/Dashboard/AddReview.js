@@ -50,7 +50,7 @@ const AddReview = () => {
         }
         // console.log(review);
 
-        fetch('https://blooming-caverns-13229.herokuapp.com/review', {
+        fetch('https://carts-server.vercel.app/review', {
             method: "POST",
             headers: {
                 'content-type': 'application/json',

@@ -14,7 +14,7 @@ const Purchase = () => {
     const [user] = useAuthState(auth)
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
-    const { data: product, isLoading, refetch } = useQuery(['product', id], () => fetch(`https://blooming-caverns-13229.herokuapp.com/part/${id}`, {
+    const { data: product, isLoading, refetch } = useQuery(['product', id], () => fetch(`https://carts-server.vercel.app/part/${id}`, {
         method: "GET",
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`
@@ -49,7 +49,7 @@ const Purchase = () => {
             notes: data.notes
         }
         // console.log(submittedOrder);
-        fetch('https://blooming-caverns-13229.herokuapp.com/order', {
+        fetch('https://carts-server.vercel.app/order', {
             method: "POST",
             headers: {
                 'content-type': 'application/json',

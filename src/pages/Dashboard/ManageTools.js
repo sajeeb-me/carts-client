@@ -8,7 +8,7 @@ import RowOfTools from './RowOfTools';
 
 const ManageTools = () => {
     const navigate = useNavigate();
-    const { data: tools, isLoading, refetch } = useQuery('tools', () => fetch('https://blooming-caverns-13229.herokuapp.com/part', {
+    const { data: tools, isLoading, refetch } = useQuery('tools', () => fetch('https://carts-server.vercel.app/part', {
         method: 'GET',
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`

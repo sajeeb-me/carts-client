@@ -13,7 +13,7 @@ const stripePromise = loadStripe('pk_test_51L0e9UKXLIT8vsGRYvQEWCxHR0302RSzSjpHM
 const Payment = () => {
     const { id } = useParams()
 
-    const { data: parts, isLoading } = useQuery(['parts', id], () => fetch(`https://blooming-caverns-13229.herokuapp.com/order/${id}`, {
+    const { data: parts, isLoading } = useQuery(['parts', id], () => fetch(`https://carts-server.vercel.app/order/${id}`, {
         method: "GET",
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`

@@ -18,7 +18,7 @@ const CheckoutForm = ({ parts }) => {
 
 
     useEffect(() => {
-        fetch('https://blooming-caverns-13229.herokuapp.com/create-payment-intent', {
+        fetch('https://carts-server.vercel.app/create-payment-intent', {
             method: "POST",
             headers: {
                 'content-type': 'application/json',
@@ -92,7 +92,7 @@ const CheckoutForm = ({ parts }) => {
                 phone
             }
 
-            fetch(`https://blooming-caverns-13229.herokuapp.com/order/${_id}`, {
+            fetch(`https://carts-server.vercel.app/order/${_id}`, {
                 method: "PATCH",
                 headers: {
                     'content-type': 'application/json',

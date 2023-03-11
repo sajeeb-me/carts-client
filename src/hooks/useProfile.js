@@ -10,7 +10,7 @@ const useProfile = (user) => {
         const email = user?.email;
         if (email) {
             setIsUserLoading(true)
-            fetch(`https://blooming-caverns-13229.herokuapp.com/profile?email=${email}`, {
+            fetch(`https://carts-server.vercel.app/profile?email=${email}`, {
                 // method: 'GET',
                 headers: {
                     authorization: `Bearer ${localStorage.getItem('accessToken')}`
@@ -47,7 +47,7 @@ export default useProfile;
 
 // const useProfile = (user) => {
 //     const navigate = useNavigate();
-//     const { data: usersProfile, isLoading: isUserLoading, refetch } = useQuery(['usersProfile', user?.email], () => fetch(`https://blooming-caverns-13229.herokuapp.com/profile?email=${user?.email}`, {
+//     const { data: usersProfile, isLoading: isUserLoading, refetch } = useQuery(['usersProfile', user?.email], () => fetch(`https://carts-server.vercel.app/profile?email=${user?.email}`, {
 //         method: 'GET',
 //         headers: {
 //             authorization: `Bearer ${localStorage.getItem('accessToken')}`
